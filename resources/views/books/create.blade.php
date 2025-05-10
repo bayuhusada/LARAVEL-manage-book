@@ -1,30 +1,27 @@
-<!-- resources/views/books/create.blade.php -->
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Tambah Buku</title>
-</head>
-<body>
-    <h1>Tambah Buku Baru</h1>
+@extends('layout')
+
+@section('content')
+    <h1 class="mb-4">Tambah Buku</h1>
 
     <form action="{{ route('books.store') }}" method="POST">
         @csrf
-        <label>Judul:</label><br>
-        <input type="text" name="title"><br>
-
-        <label>Penulis:</label><br>
-        <input type="text" name="author"><br>
-
-        <label>Tahun:</label><br>
-        <input type="number" name="year"><br>
-
-        <label>ISBN</label><br>
-        <input type="number" name="isbn"><br>
-
-        <button type="submit">Simpan</button>
+        <div class="mb-3">
+            <label for="title" class="form-label">Judul</label>
+            <input type="text" name="title" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="author" class="form-label">Penulis</label>
+            <input type="text" name="author" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="year" class="form-label">Tahun</label>
+            <input type="text" name="year" class="form-control" required>
+        </div>
+        <div class="mb-3">
+            <label for="isbn" class="form-label">ISBN</label>
+            <input type="text" name="isbn" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success">Simpan</button>
+        <a href="{{ route('books.index') }}" class="btn btn-secondary">Kembali</a>
     </form>
-
-    <br>
-    <a href="{{ route('books.index') }}">Kembali ke daftar buku</a>
-</body>
-</html>
+@endsection
